@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   get 'all_products' => 'products#all_products'
+  get 'apple_jacks' => 'products#apple_jacks'
+  get 'lucky_charms' => 'products#lucky_charms'
+  get 'froot_loops' => 'products#froot_loops'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
