@@ -1,0 +1,29 @@
+<h1>All products:</h1>
+<% @products.each do |product| %>
+  <h2><%= product.name %></h2>
+  <h3><%= product.price %></h3>
+  <p><%= product.description %></p> 
+<% end %>
+
+<!-- <div class="jumbotron">
+  <h1>Read more about cereal here!</h1>
+  <p>Everyone loves cereal.</p>
+  <p><a class="btn btn-primary btn-lg" href="https://en.wikipedia.org/wiki/Cereal" role="button">Learn more</a></p>
+</div> -->
+
+<nav>
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="http://www.kelloggs.com/en_US/apple-jacks-consumer-brand.html">1</a></li>
+    <li><a href="http://www.frootloops.com/">2</a></li>
+    <li><a href="http://www.luckycharms.com/">3</a></li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
