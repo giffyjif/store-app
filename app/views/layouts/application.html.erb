@@ -9,9 +9,12 @@
 <body>
 
 <div class="container">
-  <% flash.each do |name, message| %>
-    <p> <%= message %> </p>
-  <% end %> 
+<% flash.each do |name, message| %>
+  <div class="alert alert-<%= name %> alert-dismissible fade in" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <%= message.html_safe %>  
+  </div>
+<% end %> 
 </div>
 
 
@@ -36,6 +39,11 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+<div>
+  <h1> Welcome to the Cereal Store! </h1>
+</div>
+
 
 <%= yield %>
 

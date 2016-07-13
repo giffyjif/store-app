@@ -1,6 +1,6 @@
 <% @products.each do |product| %>
-  <a href="/products/<%= product.id %>"><h2><%= product.name %></h2></a>
-  <h3><%= product.price %></h3>
+  <a href="/products/<%= product.id %>"><h4><%= product.name %></h4></a>
+  <p><%= product.price %></p>
   <p><%= product.description %></p> 
 <% end %>
 
