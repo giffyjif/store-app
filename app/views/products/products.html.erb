@@ -1,6 +1,12 @@
+<div class="row">
 <% @products.each do |product| %>
-  <a href="/products/<%= product.id %>"><h4><%= product.name %></h4></a>
-  <p><%= product.price %></p>
-  <p><%= product.description %></p> 
+  <div class="col-md-4">
+    <div class="well">
+      <a href="/products/<%= product.id %>"><h4><%= product.name %></h4></a>
+      <p><%= product.price %></p>
+      <p><%= product.description %></p>
+    </div>
+  </div>
 <% end %>
+</div>
 

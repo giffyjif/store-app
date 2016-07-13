@@ -1,10 +1,24 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$main-color: green;
+
 body {
-    background-color: lightblue;
+    font-family: Futura,"Trebuchet MS",Arial,sans-serif;
+    background-image: image-url('pink_rice.png');
 }
+
 h1 {
   text-align: center;
+  color: $main-color;
 }
+
+h2 {
+  color: $main-color;
+}
+
+.well img {
+  width: 100%;
+}
+
 
