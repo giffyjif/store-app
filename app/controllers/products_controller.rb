@@ -34,7 +34,8 @@ class ProductsController < ApplicationController
       price: params['price'],
       description: params['description']
     )
-    render 'create.html.erb'
+    flash[:success] = "Product successfully created"
+    redirect_to '/products'
   end
 
   def edit
@@ -49,12 +50,12 @@ class ProductsController < ApplicationController
       price: params['price'],
       description: params['description']
     )
-    render 'update.html.erb'
+    redirect_to "/products/#{@product.id}"
   end
 
   def destroy
     @product = Product.find_by(id: params['id'])
     @product.destroy
-    render 'destroy.html.erb'
+    redirect_to '/products'
   end
 end

@@ -1,32 +1,6 @@
-<h1>All products:</h1>
 <% @products.each do |product| %>
-  <h2><%= product.name %></h2>
+  <a href="/products/<%= product.id %>"><h2><%= product.name %></h2></a>
   <h3><%= product.price %></h3>
   <p><%= product.description %></p> 
 <% end %>
 
-<!-- <div class="jumbotron">
-  <h1>Read more about cereal here!</h1>
-  <p>Everyone loves cereal.</p>
-  <p><a class="btn btn-primary btn-lg" href="https://en.wikipedia.org/wiki/Cereal" role="button">Learn more</a></p>
-</div> -->
-
-<nav>
-  <ul class="pagination">
-      <p>View each cereal page clicking the pages below</p>
-    <li>
-      <a href="http://localhost:3000/all_products" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li><a href="http://localhost:3000/apple_jacks">1</a></li>
-    <li><a href="http://localhost:3000/froot_loops">2</a></li>
-    <li><a href="http://localhost:3000/lucky_charms">3</a></li>
-      <a href="http://localhost:3000/all_products" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-
-<!-- <p class=sidebar> Welcome to the cereal store! This page lists all our products</p> -->
