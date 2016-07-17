@@ -1,16 +1,17 @@
-
 <% @products.each_slice(3) do |three_products| %>
 <div class="row">
   <% three_products.each do |product| %>
     <div class="col-md-4">
       <div class="well">
-        <a href="/products/<%= product.id %>"><h4><%= product.name %></h4></a>
-        <p><%= product.price %></p>
-        <p><%= product.description %></p>
+        <div class="product_single">
+          <h2 class="product_header"><%= product.name %></h2>
+          <p>Price: <%= product.price %></p>
+          <a href="/products/<%= product.id %>" title="View Product"><img src="<%= product.image %>" alt="<%= product.name %>" class="img-responsive product_single_image"></a>
+          <p>Description: <%= product.description %></p>
+        </div>
       </div>
     </div>
   <% end %>
 </div>
 <% end %>
-
 

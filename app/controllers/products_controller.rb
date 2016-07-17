@@ -1,6 +1,17 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
+    if params[:desc]
+      @products = Product.order("#{params[:sort]}" => :desc)
+    else
+      @products = Product.order(params[:sort])
+    end
+    if params[:discount]
+      @products = Product.where("price < ?", 2)
+    end
+    if params[:random]
+      @products = Product.limit(1).order("RANDOM()")
+    end
     render 'products.html.erb'
   end
 
@@ -32,7 +43,8 @@ class ProductsController < ApplicationController
     product = Product.create(
       name: params['name'],
       price: params['price'],
-      description: params['description']
+      description: params['description'],
+      image: params[:image]
     )
     flash[:success] = "Product successfully created"
     redirect_to '/products'
@@ -48,7 +60,8 @@ class ProductsController < ApplicationController
     @product.update(
       name: params['name'],
       price: params['price'],
-      description: params['description']
+      description: params['description'],
+      image: params[:image]
     )
     redirect_to "/products/#{@product.id}"
   end

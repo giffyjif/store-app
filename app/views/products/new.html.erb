@@ -1,16 +1,28 @@
-<h1>New product:</h1>
-<%= form_tag '/products', method: :post do %>
-  <div class="form-group">
-    <%= label_tag :name %>
-    <%= text_field_tag :name, '', class: "form-control"  %>
+<section>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="product_single">
+        <h1>New product:</h1>
+          <%= form_tag '/products', method: :post do %>
+            <div class="form-group">
+              <%= label_tag :name %>
+              <%= text_field_tag :name, '', class: "form-control"  %>
+            </div>
+            <div class="form-group">
+              <%= label_tag :price  %>
+              <%= text_field_tag :price, '', class: "form-control"  %>
+            </div>
+            <div class="form-group">
+              <%= label_tag :description  %>
+              <%= text_field_tag :description, '', class: "form-control"  %>
+            </div>
+            <div class ="form-group">
+              <%= label_tag :image %>
+              <%= text_field_tag :image, '', class: "form-control" %>
+            </div>
+              <%= submit_tag "Add product", class: "btn btn-default" %>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <%= label_tag :price  %>
-    <%= text_field_tag :price, '', class: "form-control"  %>
-  </div>
-  <div class="form-group">
-    <%= label_tag :description  %>
-    <%= text_field_tag :description, '', class: "form-control"  %>
-  </div>
-  <%= submit_tag "Add product", class: "btn btn-default" %>
-<% end %>
+</section>

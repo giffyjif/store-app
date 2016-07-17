@@ -1,9 +1,21 @@
-<h2><%= @product.name %></h2>
-<p><%= @product.price %></p>
-<p><%= @product.description %></p>
-<div>
-  <a href="/products/<%= @product.id %>/edit">Edit this product</a>
-</div>
-<div>
-  <%= link_to "Delete this product", "/products/#{@product.id}", method: :delete %>
-</div>
+<section>
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <div class="product_single">
+       <% if @product.discounted? %>
+          <p class="discount">Price: <%= @product.price %></p>
+          <p>Discount item!</p>
+       <% else %>
+          <p>Price: <%= @product.price %></p>
+          <p>Everyday value!</p>
+       <% end %>
+          <p>Tax: <%= number_to_currency(@product.tax) %></p>
+          <p>Total: <%= number_to_currency(@product.total) %></p>
+          <img src="<%= @product.image %>" alt="<%= @product.name %>" class="img-responsive">
+          <p>Description: <%= @product.description %></p>
+          <%= link_to "Edit", "/products/#{@product.id}/edit", class: "btn btn-success" %>
+          <%= link_to "Delete", "/products/#{@product.id}", {method: :delete, class: "btn btn-danger" }%>
+       </div>
+     </div>
+   </div>
+</section>

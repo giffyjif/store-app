@@ -32,6 +32,19 @@
       <a class="navbar-brand" href="/products">All Products</a>
       <a class="navbar-brand" href="/products/new">Create New Product</a>
     </div>
+    <!-- Single button -->
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sort By: <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="/products?sort=price">Price: Lowest to Highest</a></li>
+    <li><a href="/products?sort=price&desc=true">Price: Highest to Lowest</a></li>
+    <li><a href="/products?discount=true">Discount Items!</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="/products?random=true">Choose a random product!</a></li>
+  </ul>
+</div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
