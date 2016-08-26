@@ -2,6 +2,12 @@
 <div class="row">
   <div class="col-sm-8 col-sm-offset-2">
     <div class="product_single">
+    <p>Categories:</p>
+      <ul>
+        <% @product.categories.each do |category| %>
+          <li><%= category.name %></li>
+        <% end %>
+      </ul>
        <% if @product.discounted? %>
           <p class="discount">Price: <%= @product.price %></p>
           <p>Discount item!</p>
@@ -13,9 +19,30 @@
           <p>Total: <%= number_to_currency(@product.total) %></p>
           <img src="<%= @product.image %>" alt="<%= @product.name %>" class="img-responsive">
           <p>Description: <%= @product.description %></p>
-          <%= link_to "Edit", "/products/#{@product.id}/edit", class: "btn btn-success" %>
-          <%= link_to "Delete", "/products/#{@product.id}", {method: :delete, class: "btn btn-danger" }%>
+          <% if current_user && current_user.admin %>
+            <%= link_to "Edit", "/products/#{@product.id}/edit", class: "btn btn-success" %>
+            <%= link_to "Delete", "/products/#{@product.id}", {method: :delete, class: "btn btn-danger" }%>
+          <% end %>
        </div>
      </div>
    </div>
+</section>
+<section>
+<h4>Checkout</h4>
+  <%= form_tag '/cart', method: :post do  %>
+    <div class="form-group">
+    <%= label_tag :quantity %>
+    <%= text_field_tag :quantity %>
+    </div>
+    <div class="form-group">
+      <% if current_user %>
+        <%= hidden_field_tag :user_id, current_user.id%>
+      <% else %>
+      <% end %>
+    </div>
+    <div class="form-group">
+        <%= hidden_field_tag :product_id, @product.id%>
+    </div>
+    <%= submit_tag "Add to Cart!" %>
+  <% end %>
 </section>

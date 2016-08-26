@@ -1,0 +1,12 @@
+<section>
+  <h3>Here is your order!</h3>
+  <p>User: <%= current_user.name %></p>
+    <p>Products: <%= @order.product_names %></p>
+    <p>Order Id: <%= @order.id %></p>
+    <p>Subtotal: <%= @order.subtotal %></p>
+    <p>Tax: <%= @order.tax %></p>
+    <hr>
+    <p>Total: <%= @order.total %></p>
+    <p>Email: <%= @order.user.email %></p>
+    <p>Purchased at: <%= @order.created_at %></p>
+</section>

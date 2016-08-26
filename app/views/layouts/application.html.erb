@@ -17,8 +17,12 @@
 <% end %> 
 </div>
 
+<div>
+  <h1> Welcome to the Cereal Store! </h1>
+</div>
 
-
+</body>
+</html>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -29,36 +33,54 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/products">All Products</a>
-      <a class="navbar-brand" href="/products/new">Create New Product</a>
+      <a class="navbar-brand" href="/products">The Cereal Store</a>
     </div>
-    <!-- Single button -->
-<div class="btn-group">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Sort By: <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a href="/products?sort=price">Price: Lowest to Highest</a></li>
-    <li><a href="/products?sort=price&desc=true">Price: Highest to Lowest</a></li>
-    <li><a href="/products?discount=true">Discount Items!</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="/products?random=true">Choose a random product!</a></li>
-  </ul>
-</div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+        <% if current_user %>
+          <li><a href="/logout">Log Out</a></li>
+          <li><a href="/checkout">Checkout!</a>
+        <% else %>
+          <li><a href="/login">Log In</a></li>
+          <li><a href="/signup">Sign Up</a></li>
+        <% end %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/products">All Products</a></li>
+            <li><a href="/products/new">Create a new product</a></li>
+<!--             <li><a href="/signup">Sign Up</a></li>
+ -->          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+<!--         <li><a href="#">Link</a></li>
+ -->        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sort By: <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/products?sort=price">Price: Lowest to Highest</a></li>
+            <li><a href="/products?sort=price&desc=true">Price: Highest to Lowest</a></li>
+            <li><a href="/products?discount=true">Discount Items!</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/products?random=true">Choose a random product!</a></li>
+            <li role="separator" class="divider"></li>
+            <% Category.all.each do |category| %>
+              <li><a href="/products?category_id=<%= category.id %>"><%= category.name %></a></li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
-<div>
-  <h1> Welcome to the Cereal Store! </h1>
-</div>
-
 
 <%= yield %>
-
-</body>
-</html>

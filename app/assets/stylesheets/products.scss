@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$main-color: green;
+$main-color: rosybrown;
 
 body {
     font-family: Futura,"Trebuchet MS",Arial,sans-serif;
@@ -19,6 +19,7 @@ h2 {
 }
 
 .well img {
+  height: 125px;
   width: 100px;
 }
 
@@ -28,5 +29,18 @@ h2 {
 
 .well {
   width: 100%;
+  background-color: whitesmoke;
 }
 
+img {
+  height: 250px;
+  width: 225px;
+}
+
+div h4 {
+  color: maroon;
+}
+
+.product_header {
+  color: darksalmon;
+}

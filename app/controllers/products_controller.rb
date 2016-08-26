@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_admin!, except: [:index, :show]
+
   def index
     @products = Product.all
     if params[:desc]
@@ -12,22 +14,11 @@ class ProductsController < ApplicationController
     if params[:random]
       @products = Product.limit(1).order("RANDOM()")
     end
+    if params[:category_id]
+      selected_category = Category.find_by(id: params[:category_id])
+      @products = selected_category.products
+    end
     render 'products.html.erb'
-  end
-
-  def apple_jacks
-    @apple_jacks = Product.first
-    render 'applejacks.html.erb'
-  end
-
-  def froot_loops
-    @froot_loops = Product.second
-    render 'frootloops.html.erb'
-  end
-
-  def lucky_charms
-    @lucky_charms = Product.third
-    render 'luckycharms.html.erb'
   end
 
   def show
@@ -36,18 +27,23 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @product = Product.new
     render 'new.html.erb'
   end
 
   def create
-    product = Product.create(
+    @product = Product.new(
       name: params['name'],
       price: params['price'],
       description: params['description'],
       image: params[:image]
     )
-    flash[:success] = "Product successfully created"
-    redirect_to '/products'
+    if @product.save
+      flash[:success] = "Product successfully created!"
+      redirect_to "/products/#{@product.id}"
+    else
+      render 'new.html.erb'
+    end
   end
 
   def edit
@@ -63,12 +59,22 @@ class ProductsController < ApplicationController
       description: params['description'],
       image: params[:image]
     )
-    redirect_to "/products/#{@product.id}"
+    if @product.save
+      flash[:success] = "Product successfully updated!"
+      redirect_to "/products/#{@product.id}"
+    else
+      render 'edit.html.erb'
+    end
   end
 
   def destroy
     @product = Product.find_by(id: params['id'])
     @product.destroy
     redirect_to '/products'
+  end
+
+  def search
+    @products = Product.where("name LIKE ?", "%#{params[search_terms]}%")
+    render 'index.html.erb'
   end
 end

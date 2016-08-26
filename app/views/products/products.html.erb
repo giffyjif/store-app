@@ -1,3 +1,7 @@
+<% if current_user %>
+  <p>Welcome <%= current_user.name %></p>
+<% end %>
+
 <% @products.each_slice(3) do |three_products| %>
 <div class="row">
   <% three_products.each do |product| %>
@@ -5,9 +9,10 @@
       <div class="well">
         <div class="product_single">
           <h2 class="product_header"><%= product.name %></h2>
-          <p>Price: <%= product.price %></p>
           <a href="/products/<%= product.id %>" title="View Product"><img src="<%= product.image %>" alt="<%= product.name %>" class="img-responsive product_single_image"></a>
+          <hr>
           <p>Description: <%= product.description %></p>
+          <p>Price: <%= product.price %></p>
         </div>
       </div>
     </div>

@@ -1,0 +1,17 @@
+<% if current_user %>
+  <p>Welcome <%= current_user.name %>!</p>
+  <p>Cart: <%= @carted_products %></p>
+<% end %>
+
+<section>
+<h4>Checkout</h4>
+  <%= form_tag '/orders', method: :post do  %>
+    <div class="form-group">
+    <%= hidden_field_tag :user_id, current_user.id%>
+    </div>
+    <div class="form-group">
+    <%= hidden_field_tag :product_id%>
+    </div>
+    <%= submit_tag "Buy Now!" %>
+  <% end %>
+</section>

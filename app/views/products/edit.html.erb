@@ -1,3 +1,18 @@
+<div>
+  <% if @product.errors.any? %>
+  <div id="error_explanation">
+    <h4><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h4>
+ 
+    <ul>
+    <% @product.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+</div>
+
+
 <section>
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
